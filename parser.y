@@ -31,7 +31,7 @@ term : term '*' factor { emit('*', NONE); }
      | factor
      ;
 factor : '(' expr ')'
-       | ID { emit(ID, yylval); }
-       | NUM { emit(NUM, yylval); }
+       | ID { emit(ID, $1); }
+       | NUM { emit(NUM, $1); }
        ;
 %%

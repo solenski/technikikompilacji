@@ -1250,13 +1250,13 @@ yyreduce:
 
   case 13:
 #line 34 "parser.y" /* yacc.c:1646  */
-    { emit(ID, yylval); }
+    { emit(ID, (yyvsp[0])); }
 #line 1255 "parser.c" /* yacc.c:1646  */
     break;
 
   case 14:
 #line 35 "parser.y" /* yacc.c:1646  */
-    { emit(NUM, yylval); }
+    { emit(NUM, (yyvsp[0])); }
 #line 1261 "parser.c" /* yacc.c:1646  */
     break;
 

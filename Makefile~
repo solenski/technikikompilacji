@@ -30,5 +30,5 @@ init.o : init.c global.h
 	gcc -c init.c
 
 clean:
-	rm -rf init.o lexer.o symbol.o error.o emitter.o parser.o main.o parser.c parser.h prog
+	rm -rf init.o lexer.c lexer.o symbol.o error.o emitter.o parser.o main.o parser.c parser.h prog
 

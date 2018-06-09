@@ -4,7 +4,7 @@ prog : main.o parser.o emitter.o error.o symbol.o lexer.o init.o
 main.o : main.c global.h 
 	gcc -c main.c
 
-parser.c parser.h: global.h 
+parser.c parser.h: parser.y
 	bison -o parser.c parser.y --defines=parser.h
 
 parser.o : parser.c global.h
@@ -19,7 +19,7 @@ error.o : error.c global.h
 symbol.o : symbol.c global.h
 	gcc -c symbol.c
 
-lexer.c: global.h parser.h
+lexer.c: lexer.l
 	flex -o lexer.c lexer.l
 
 lexer.o : lexer.c global.h  
