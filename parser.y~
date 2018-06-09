@@ -14,10 +14,9 @@ void yyerror (const char *s) {
 %token DIV
 %token MOD
 %token ID
-%token DONE 
+%token DONE 0
 %%
-start : list DONE
-      ;
+
 list : expr ';' list
      | %empty
      ;
@@ -32,7 +31,7 @@ term : term '*' factor { emit('*', NONE); }
      | factor
      ;
 factor : '(' expr ')'
-       | ID { emit(ID, tokenval); }
-       | NUM { emit(NUM, tokenval); }
+       | ID { emit(ID, yyval); }
+       | NUM { emit(NUM, yyval); }
        ;
 %%

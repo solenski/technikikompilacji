@@ -468,8 +468,7 @@ char *yytext;
 	#include "parser.h"
 	char lexbuf[BSIZE];
 	int lineno = 1;
-	int tokenval = NONE;
-#line 473 "lexer.c"
+#line 472 "lexer.c"
 
 #define INITIAL 0
 
@@ -656,9 +655,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 19 "lexer.l"
+#line 18 "lexer.l"
 
-#line 662 "lexer.c"
+#line 661 "lexer.c"
 
 	if ( !(yy_init) )
 		{
@@ -743,40 +742,40 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 20 "lexer.l"
+#line 19 "lexer.l"
 {}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 21 "lexer.l"
+#line 20 "lexer.l"
 {lineno++;}	
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 22 "lexer.l"
+#line 21 "lexer.l"
 {return install_num();}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 23 "lexer.l"
+#line 22 "lexer.l"
 {return install_id();}
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 24 "lexer.l"
+#line 23 "lexer.l"
 {return DONE;}	
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 25 "lexer.l"
+#line 24 "lexer.l"
 {return install_anyother(); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 26 "lexer.l"
+#line 25 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 780 "lexer.c"
+#line 779 "lexer.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1772,13 +1771,13 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 26 "lexer.l"
+#line 25 "lexer.l"
 
 
 
 
 int install_num() {
-	sscanf(yytext, "%d", &tokenval);
+	sscanf(yytext, "%d", &yylval);
 	return NUM;
 }
 
@@ -1786,12 +1785,12 @@ int install_id() {
 	int p = lookup(yytext);
 	if(p == 0)
 		p = insert(yytext, ID);
-	tokenval = p;
+	yylval = p;
 	return symtable[p].token;
 }
 
 int install_anyother() {
-	tokenval = NONE;
+	yylval = NONE;
 	return yytext[0];
 }
 

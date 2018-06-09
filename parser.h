@@ -45,12 +45,12 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
+    DONE = 0,
     NONE = 258,
     NUM = 259,
     DIV = 260,
     MOD = 261,
-    ID = 262,
-    DONE = 263
+    ID = 262
   };
 #endif
 

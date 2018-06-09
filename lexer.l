@@ -3,7 +3,6 @@
 	#include "parser.h"
 	char lexbuf[BSIZE];
 	int lineno = 1;
-	int tokenval = NONE;
 %}
 
 delim 		[\t ]
@@ -27,7 +26,7 @@ number		{digit}+
 
 
 int install_num() {
-	sscanf(yytext, "%d", &tokenval);
+	sscanf(yytext, "%d", &yylval);
 	return NUM;
 }
 
@@ -35,12 +34,12 @@ int install_id() {
 	int p = lookup(yytext);
 	if(p == 0)
 		p = insert(yytext, ID);
-	tokenval = p;
+	yylval = p;
 	return symtable[p].token;
 }
 
 int install_anyother() {
-	tokenval = NONE;
+	yylval = NONE;
 	return yytext[0];
 }
 
